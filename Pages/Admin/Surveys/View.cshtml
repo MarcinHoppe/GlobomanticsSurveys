@@ -8,15 +8,15 @@
 <form>
     <ul>
         <li>
-            <label asp-for="Survey.Id"></label>
-            <input asp-for="Survey.Id" type="text" readonly="readonly" />
+            <label asp-for="Survey!.Id"></label>
+            <input asp-for="Survey!.Id" type="text" readonly="readonly" />
         </li>
         <li>
-            <label asp-for="Survey.Title"></label>
-            <input asp-for="Survey.Title" type="text" readonly="readonly" />
+            <label asp-for="Survey!.Title"></label>
+            <input asp-for="Survey!.Title" type="text" readonly="readonly" />
         </li>
         <hr>
-        @foreach (var question in Model.Survey?.Questions)
+        @foreach (var question in Model.Survey!.Questions)
         {
             <li>
                 <label></label>
