@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using GlobomanticsSurveys;
+using GlobomanticsSurveys.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace GlobomanticsSurveys
+using GlobomanticsSurveys.Models;
+
+namespace GlobomanticsSurveys.Data
 {
     public class SurveysContext : DbContext
     {

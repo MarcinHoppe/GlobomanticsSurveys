@@ -1,0 +1,27 @@
+@page
+@model IndexModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Surveys Admin";
+}
+
+<table>
+    <caption>All surveys</caption>
+    <thead>
+        <tr>
+            <th>Survey #</th>
+            <th>Title</th>
+            <th>Questions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var survey in Model.Surveys)
+        {
+            <tr>
+                <td>@survey.Id</td>
+                <td>@survey.Title</td>
+                <td><a asp-page="./View" asp-route-id="@survey.Id">Questions</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

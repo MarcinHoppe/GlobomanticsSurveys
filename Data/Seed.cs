@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace GlobomanticsSurveys
+using GlobomanticsSurveys.Models;
+
+namespace GlobomanticsSurveys.Data
 {
     public static class Seed
     {
@@ -18,15 +20,32 @@ namespace GlobomanticsSurveys
                 context.AddRange(
                     new Survey
                     {
-                        Title = "Customer satisfaction"
+                        Title = "Customer satisfaction",
+                        Questions = new List<Question>
+                        {
+                            new() { Text = "Lorem ipsum dolor sit amet" },
+                            new() { Text = "consectetur adipiscing elit" },
+                            new() { Text = "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" }
+                        }
                     },
                     new Survey
                     {
-                        Title = "Marketing study"
+                        Title = "Marketing study",
+                        Questions = new List<Question>
+                        {
+                            new() { Text = "Ut enim ad minim veniam" },
+                            new() { Text = "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat" },
+                        }
                     },
                     new Survey
                     {
-                        Title = "Best movies"
+                        Title = "Best movies",
+                        Questions = new List<Question>
+                        {
+                            new() { Text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" },
+                            new() { Text = "Excepteur sint occaecat cupidatat non proident" },
+                            new() { Text = "sunt in culpa qui officia deserunt mollit anim id est laborum" },
+                        }
                     }
                 );
 
