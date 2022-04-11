@@ -11,7 +11,7 @@
         <tr>
             <th>Survey #</th>
             <th>Title</th>
-            <th>Questions</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,8 @@
             <tr>
                 <td>@survey.Id</td>
                 <td>@survey.Title</td>
-                <td><a asp-page="./View" asp-route-id="@survey.Id">Questions</a></td>
+                <td><a asp-page="./View" asp-route-id="@survey.Id">View</a> | 
+                <a asp-page="./Edit" asp-route-id="@survey.Id">Edit</a></td>
             </tr>
         }
     </tbody>

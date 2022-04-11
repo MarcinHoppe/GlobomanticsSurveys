@@ -16,12 +16,15 @@
             <input asp-for="Survey!.Title" type="text" readonly="readonly" />
         </li>
         <hr>
-        @foreach (var question in Model.Survey!.Questions)
+        @foreach (var question in Model.Questions!)
         {
             <li>
                 <label></label>
                 @Html.TextAreaFor(model => question.Text, new { @readonly = "readonly" })
             </li>
         }
+        <li class="button">
+            <a asp-page="./Edit" asp-route-id="@Model.Survey!.Id">Edit</a>
+        </li>
     </ul>
 </form>

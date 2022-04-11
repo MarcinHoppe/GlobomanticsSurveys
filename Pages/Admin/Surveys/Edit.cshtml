@@ -1,5 +1,42 @@
-@page
+@page "{id:int}"
+@model EditModel
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Edit Survey";
 }
+
+<form method="post">
+    <ul>
+        <li>
+            <label asp-for="Survey!.Id"></label>
+            <input asp-for="Survey!.Id" type="text" readonly="readonly" />
+        </li>
+        <li>
+            <label asp-for="Survey!.Title"></label>
+            <input asp-for="Survey!.Title" type="text" />
+        </li>
+        <hr>
+        @for (int i = 0; i < Model.Questions!.Count; i++)
+        {
+            <li>
+                <label asp-for="Questions![i].Text"></label>
+                <input type="hidden" asp-for="Questions![i].Id" />
+                <textarea asp-for="Questions![i].Text"></textarea>
+                <button type="submit" asp-page-handler="delete" asp-route-qid="@Model.Questions[i].Id">
+                    Delete
+                </button>
+            </li>
+        }
+        <li>
+            <label></label>
+            <input asp-for="NewQuestion!.Text" />
+            <button type="submit" asp-page-handler="add">
+                    Add
+            </button>
+        </li>
+        <hr>
+        <li class="button">
+            <button type="submit">Save</button>
+        </li>
+    </ul>
+</form>

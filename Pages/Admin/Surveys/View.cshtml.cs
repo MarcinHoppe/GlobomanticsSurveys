@@ -15,13 +15,17 @@ namespace GlobomanticsSurveys.Pages.Admin.Surveys
         [BindProperty]
         public Survey? Survey { get; set; }
 
+        [BindProperty]
+        public List<Question>? Questions { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int id)
         {
             Survey = await context.Surveys.Include(s => s.Questions).FirstOrDefaultAsync(s => s.Id == id);
             if (Survey == null)
             {
-                return RedirectToPage("./Index");
+                return NotFound();
             }
+            Questions = new List<Question>(Survey.Questions);
             return Page();
         }
     }
