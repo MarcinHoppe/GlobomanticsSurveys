@@ -19,9 +19,9 @@
         {
             <tr>
                 <td>@survey.Id</td>
-                <td>@survey.Title</td>
-                <td><a asp-page="./View" asp-route-id="@survey.Id">View</a> | 
-                <a asp-page="./Edit" asp-route-id="@survey.Id">Edit</a></td>
+                <td><a asp-page="./View" asp-route-id="@survey.Id">@survey.Title</a></td>
+                <td><a asp-page="./Edit" asp-route-id="@survey.Id">Edit</a> |
+                <a asp-page="./Delete" asp-route-id="@survey.Id">Delete</a></td>
             </tr>
         }
     </tbody>

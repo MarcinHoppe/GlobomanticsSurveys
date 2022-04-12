@@ -21,6 +21,7 @@
             <li>
                 <label asp-for="Questions![i].Text"></label>
                 <input type="hidden" asp-for="Questions![i].Id" />
+                <input type="hidden" asp-for="Questions![i].SurveyId" />
                 <textarea asp-for="Questions![i].Text"></textarea>
                 <button type="submit" asp-page-handler="delete" asp-route-qid="@Model.Questions[i].Id">
                     Delete

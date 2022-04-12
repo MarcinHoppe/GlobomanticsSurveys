@@ -52,6 +52,7 @@ namespace GlobomanticsSurveys.Pages.Admin.Surveys
             }
             if (!string.IsNullOrWhiteSpace(NewQuestion?.Text))
             {
+                NewQuestion.SurveyId = Survey.Id;
                 Survey.Questions.Add(NewQuestion!);
             }
             context.Attach(Survey!).State = EntityState.Modified;

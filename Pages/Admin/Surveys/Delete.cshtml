@@ -1,5 +1,17 @@
-@page
+@page "{id:int}"
+@model DeleteModel
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Delete Survey";
 }
+
+<form method="post">
+    <ul>
+        <li>
+            <h3>Deleting @Model.Survey!.Title. Are you sure?</h3>
+        </li>
+        <li>
+            <button type="submit">Delete</button>
+        </li>
+    </ul>
+</form>
