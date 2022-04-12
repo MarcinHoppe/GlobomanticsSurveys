@@ -1,5 +1,17 @@
-@page
+@page "{id:int}"
+@model ExportModel
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Export Survey";
 }
+
+<form>
+    <ul>
+        <li>
+            Download survey definition
+        </li>
+        <li>
+            <a asp-route-id="@Model.Survey!.Id" asp-page-handler="download">Download</a>
+        </li>
+    </ul>
+</form>
