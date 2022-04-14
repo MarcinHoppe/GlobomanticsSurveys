@@ -1,5 +1,18 @@
 @page
+@model ImportSurveyModel
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Import Survey";
 }
+
+<form enctype="multipart/form-data" method="post">
+    <ul>
+        <li>
+            <label asp-for="Upload!.SurveyFile"></label>
+            <input asp-for="Upload!.SurveyFile" type="file" />
+        </li>
+        <li class="button">
+            <button type="submit">Upload</button>
+        </li>
+    </ul>
+</form>
