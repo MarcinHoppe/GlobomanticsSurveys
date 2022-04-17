@@ -51,6 +51,24 @@ namespace GlobomanticsSurveys.Migrations
                     b.ToTable("Surveys");
                 });
 
+            modelBuilder.Entity("GlobomanticsSurveys.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("GlobomanticsSurveys.Models.Question", b =>
                 {
                     b.HasOne("GlobomanticsSurveys.Models.Survey", null)

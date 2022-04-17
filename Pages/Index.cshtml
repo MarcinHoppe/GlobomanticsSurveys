@@ -1,19 +1,29 @@
 @page
+@using Microsoft.AspNetCore.Http
 @namespace GlobomanticsSurveys.Pages
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Main";
 }
 
-<h3 class="navLink">
-    <a asp-page="User/TakeSurvey">Take Survey</a>
-</h3>
-<h3 class="navLink">
-    <a asp-page="User/Profile/Index">Profile</a>
-</h3>
-<h3 class="navLink">
-    <a asp-page="User/Surveys/Index">Your Surveys</a>
-</h3>
-<h3 class="navLink">
-    <a asp-page="Admin/Index">Admin</a>
-</h3>
+@if (HttpContext.Session.GetString("User") == null) {
+    <h3 class="navLink">
+        <a asp-page="./Login">Login</a>
+    </h3>
+} else {
+    <h3 class="navLink">
+        <a asp-page="./Login" asp-page-handler="logout">Logout</a>
+    </h3>
+    <h3 class="navLink">
+        <a asp-page="User/TakeSurvey">Take Survey</a>
+    </h3>
+    <h3 class="navLink">
+        <a asp-page="User/Profile/Index">Profile</a>
+    </h3>
+    <h3 class="navLink">
+        <a asp-page="User/Surveys/Index">Your Surveys</a>
+    </h3>
+    <h3 class="navLink">
+        <a asp-page="Admin/Index">Admin</a>
+    </h3>
+}

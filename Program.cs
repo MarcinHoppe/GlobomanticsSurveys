@@ -8,6 +8,8 @@ builder.Services.AddDbContext<SurveysContext>(
     options => options.UseSqlite(builder.Configuration.GetConnectionString("SurveysDatabase"))
 );
 builder.Services.AddHttpClient();
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -17,6 +19,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseStaticFiles();
+app.UseSession();
 app.UseRouting();
 app.MapRazorPages();
 app.Run();

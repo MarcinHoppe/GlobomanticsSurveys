@@ -49,6 +49,22 @@ namespace GlobomanticsSurveys.Data
                     }
                 );
 
+                context.AddRange(
+                    new User
+                    {
+                        Username = "Jane"
+                    },
+                    new User
+                    {
+                        Username = "Joe"
+                    },
+                    new User
+                    {
+                        Username = "admin",
+                        IsAdmin = true
+                    }
+                );
+
                 context.SaveChanges();
             }
         }

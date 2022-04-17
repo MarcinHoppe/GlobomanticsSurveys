@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GlobomanticsSurveys.Migrations
 {
     [DbContext(typeof(SurveysContext))]
-    [Migration("20220412072253_init")]
+    [Migration("20220417155910_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,6 +51,24 @@ namespace GlobomanticsSurveys.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Surveys");
+                });
+
+            modelBuilder.Entity("GlobomanticsSurveys.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("GlobomanticsSurveys.Models.Question", b =>

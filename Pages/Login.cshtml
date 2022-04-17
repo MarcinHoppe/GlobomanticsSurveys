@@ -1,0 +1,18 @@
+@page
+@model LoginModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Main";
+}
+
+<form method="post">
+    <ul>
+        <li>
+            <label asp-for="Username"></label>
+            <input asp-for="Username" type="text" />
+        </li>
+        <li class="button">
+            <button type="submit">Login</button>
+        </li>
+    </ul>
+</form>
