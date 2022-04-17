@@ -7,6 +7,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<SurveysContext>(
     options => options.UseSqlite(builder.Configuration.GetConnectionString("SurveysDatabase"))
 );
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

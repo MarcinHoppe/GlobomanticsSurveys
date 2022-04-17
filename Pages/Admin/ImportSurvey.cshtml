@@ -12,7 +12,15 @@
             <input asp-for="Upload!.SurveyFile" type="file" />
         </li>
         <li class="button">
-            <button type="submit">Upload</button>
+            <button type="submit" asp-page-handler="upload">Upload</button>
+        </li>
+        <hr />
+        <li>
+            <label asp-for="Download!.SurveyFile"></label>
+            <input asp-for="Download!.SurveyFile" type="url" />
+        </li>
+        <li class="button">
+            <button type="submit" asp-page-handler="download">Download</button>
         </li>
     </ul>
 </form>
