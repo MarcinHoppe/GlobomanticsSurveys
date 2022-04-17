@@ -6,11 +6,14 @@
     ViewData["Title"] = "Main";
 }
 
-@if (HttpContext.Session.GetString("User") == null) {
+@if (HttpContext.Session.GetString("User") == null)
+{
     <h3 class="navLink">
         <a asp-page="./Login">Login</a>
     </h3>
-} else {
+}
+else
+{
     <h3 class="navLink">
         <a asp-page="./Login" asp-page-handler="logout">Logout</a>
     </h3>
@@ -23,7 +26,10 @@
     <h3 class="navLink">
         <a asp-page="User/Surveys/Index">Your Surveys</a>
     </h3>
-    <h3 class="navLink">
-        <a asp-page="Admin/Index">Admin</a>
-    </h3>
+    @if (HttpContext.Session.GetInt32("IsAdmin") == 1)
+    {
+        <h3 class="navLink">
+            <a asp-page="Admin/Index">Admin</a>
+        </h3>
+    }
 }

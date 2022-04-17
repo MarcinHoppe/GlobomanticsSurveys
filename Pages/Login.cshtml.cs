@@ -22,6 +22,7 @@ namespace GlobomanticsSurveys.Pages
                 return Unauthorized();
             }
             HttpContext.Session.SetString("User", user.Username);
+            HttpContext.Session.SetInt32("IsAdmin", user.IsAdmin ? 1 : 0);
             return RedirectToPage("./Index");
         }
 

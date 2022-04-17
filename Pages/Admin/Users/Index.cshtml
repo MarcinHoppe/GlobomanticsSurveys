@@ -1,5 +1,25 @@
 @page
+@model IndexModel
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Admin Users";
 }
+
+<table>
+    <caption>All surveys</caption>
+    <thead>
+        <tr>
+            <th>User #</th>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users!)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Username</td>
+            </tr>
+        }
+    </tbody>
+</table>
