@@ -1,0 +1,31 @@
+@page
+@model IndexModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Past Surveys";
+}
+
+<h3 class="navLink">
+    <a asp-page="./ViewResults">View</a>
+</h3>
+
+<table>
+    <caption>Available surveys</caption>
+    <thead>
+        <tr>
+            <th>Survey #</th>
+            <th>Title</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var survey in Model.Surveys!)
+        {
+            <tr>
+                <td>@survey.Id</td>
+                <td>@survey.Title</td>
+                <td><a href="#">Take survey!</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
