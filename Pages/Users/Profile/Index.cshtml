@@ -1,12 +1,30 @@
 @page
+@model IndexModel
 @{
     Layout = "_Layout";
     ViewData["Title"] = "User Profile";
 }
 
 <h3 class="navLink">
-    <a asp-page="./EditProfile">Edit Profile</a>
-</h3>
-<h3 class="navLink">
     <a asp-page="./UploadAvatar">Upload Avatar</a>
 </h3>
+
+<form>
+    <ul>
+        <li>
+            <label asp-for="CurrentUser!.Id"></label>
+            <input asp-for="CurrentUser!.Id" type="text" readonly="readonly" />
+        </li>
+        <li>
+            <label asp-for="CurrentUser!.Username"></label>
+            <input asp-for="CurrentUser!.Username" type="text" readonly="readonly" />
+        </li>
+        <li>
+            <label asp-for="CurrentUser!.Email"></label>
+            <input asp-for="CurrentUser!.Email" type="email" readonly="readonly" />
+        </li>
+        <li class="button">
+            <a asp-page="EditProfile">Edit</a>
+        </li>
+    </ul>
+</form>
