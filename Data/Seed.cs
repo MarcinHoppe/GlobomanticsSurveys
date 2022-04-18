@@ -52,15 +52,18 @@ namespace GlobomanticsSurveys.Data
                 context.AddRange(
                     new User
                     {
-                        Username = "Jane"
+                        Username = "Jane",
+                        Email = "jane@example.com"
                     },
                     new User
                     {
-                        Username = "Joe"
+                        Username = "Joe",
+                        Email = "joe@example.com"
                     },
                     new User
                     {
                         Username = "admin",
+                        Email = "admin@globomantics.com",
                         IsAdmin = true
                     }
                 );

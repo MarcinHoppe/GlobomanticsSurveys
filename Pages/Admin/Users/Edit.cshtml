@@ -1,0 +1,26 @@
+@page "{id:int}"
+@model EditModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Admin Edit User";
+}
+
+<form method="post">
+    <ul>
+        <li>
+            <label asp-for="EditUser!.Id"></label>
+            <input asp-for="EditUser!.Id" type="text" readonly="readonly" />
+        </li>
+        <li>
+            <label asp-for="EditUser!.Username"></label>
+            <input asp-for="EditUser!.Username" type="text" />
+        </li>
+        <li>
+            <label asp-for="EditUser!.Email"></label>
+            <input asp-for="EditUser!.Email" type="email" />
+        </li>
+        <li class="button">
+            <button type="submit">Save</button>
+        </li>
+    </ul>
+</form>
