@@ -5,6 +5,7 @@
     "terminal.integrated.fontSize": 18,
     "workbench.activityBar.visible": false,
     "editor.quickSuggestions": false,
+    "editor.codeLens": false,
     "editor.suggestOnTriggerCharacters": false,
     "editor.wordBasedSuggestions": false,
     "editor.quickSuggestionsDelay": 1000000,

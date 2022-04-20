@@ -1,0 +1,16 @@
+@model GlobomanticsSurveys.Models.Survey
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Take survey!";
+}
+
+<form method="post">
+    <ul>
+        <li>
+            <h2 class="title">Take the @Model.Title survey!</h2>
+        </li>
+        <li class="button">
+            <button type="submit" asp-action="Start" asp-route-id="@Model.Id">Start!</button>
+        </li>
+    </ul>
+</form>

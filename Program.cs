@@ -4,6 +4,7 @@ using GlobomanticsSurveys.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SurveysContext>(
     options => options.UseSqlite(builder.Configuration.GetConnectionString("SurveysDatabase"))
 );
@@ -21,5 +22,6 @@ using (var scope = app.Services.CreateScope())
 app.UseStaticFiles();
 app.UseSession();
 app.UseRouting();
+app.MapDefaultControllerRoute();
 app.MapRazorPages();
 app.Run();

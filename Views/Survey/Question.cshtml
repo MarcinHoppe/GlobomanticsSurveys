@@ -1,0 +1,23 @@
+@model GlobomanticsSurveys.Models.QuestionResponse
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Answer Question";
+}
+
+<form method="post">
+    @Html.HiddenFor(model => model.SurveyResponseId)
+    @Html.HiddenFor(model => model.QuestionIndex)
+    <ul>
+        <li>
+            <label asp-for="QuestionText"></label>
+            <input asp-for="QuestionText" type="text" readonly="readonly" />
+        </li>
+        <li>
+            <label asp-for="ResponseText"></label>
+            <input asp-for="ResponseText" type="text" />
+        </li>
+        <li class="button">
+            <button type="submit" asp-action="RecordResponse">Next</button>
+        </li>
+    </ul>
+</form>

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GlobomanticsSurveys.Migrations
 {
     [DbContext(typeof(SurveysContext))]
-    [Migration("20220418140639_init")]
+    [Migration("20220420072253_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,33 @@ namespace GlobomanticsSurveys.Migrations
                     b.ToTable("Question");
                 });
 
+            modelBuilder.Entity("GlobomanticsSurveys.Models.QuestionResponse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("QuestionIndex")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("QuestionText")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ResponseText")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("SurveyResponseId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyResponseId");
+
+                    b.ToTable("QuestionResponse");
+                });
+
             modelBuilder.Entity("GlobomanticsSurveys.Models.Survey", b =>
                 {
                     b.Property<int>("Id")
@@ -51,6 +78,29 @@ namespace GlobomanticsSurveys.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Surveys");
+                });
+
+            modelBuilder.Entity("GlobomanticsSurveys.Models.SurveyResponse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Completed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("QuestionCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SurveyId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Responses");
                 });
 
             modelBuilder.Entity("GlobomanticsSurveys.Models.User", b =>
@@ -84,9 +134,23 @@ namespace GlobomanticsSurveys.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("GlobomanticsSurveys.Models.QuestionResponse", b =>
+                {
+                    b.HasOne("GlobomanticsSurveys.Models.SurveyResponse", null)
+                        .WithMany("Responses")
+                        .HasForeignKey("SurveyResponseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("GlobomanticsSurveys.Models.Survey", b =>
                 {
                     b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("GlobomanticsSurveys.Models.SurveyResponse", b =>
+                {
+                    b.Navigation("Responses");
                 });
 #pragma warning restore 612, 618
         }

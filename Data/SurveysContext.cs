@@ -13,5 +13,6 @@ namespace GlobomanticsSurveys.Data
 
         public DbSet<Survey> Surveys => Set<Survey>();
         public DbSet<User> Users => Set<User>();
+        public DbSet<SurveyResponse> Responses => Set<SurveyResponse>();
     }
 }

@@ -24,7 +24,11 @@
             <tr>
                 <td>@survey.Id</td>
                 <td>@survey.Title</td>
-                <td><a href="#">Take survey!</a></td>
+                <td>
+                    <a asp-controller="Survey"
+                       asp-action="Index"
+                       asp-route-id="@survey.Id">Take survey!</a>
+                </td>
             </tr>
         }
     </tbody>
