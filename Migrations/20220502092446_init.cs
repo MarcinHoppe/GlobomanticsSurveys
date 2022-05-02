@@ -45,7 +45,8 @@ namespace GlobomanticsSurveys.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Username = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
-                    IsAdmin = table.Column<bool>(type: "INTEGER", nullable: false)
+                    IsAdmin = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Avatar = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

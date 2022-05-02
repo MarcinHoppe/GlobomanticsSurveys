@@ -351,3 +351,9 @@ MigrationBackup/
 
 # Local database
 surveys.db*
+
+# Uploads to wwwroot
+wwwroot/*.png
+wwwroot/*.gif
+wwwroot/*.jpg
+wwwroot/*.jpeg

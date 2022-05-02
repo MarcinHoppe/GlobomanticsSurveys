@@ -1,5 +1,18 @@
 @page
+@model UploadAvatarModel
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Upload Avatar";
 }
+
+<form enctype="multipart/form-data" method="post">
+    <ul>
+        <li>
+            <label asp-for="Upload!.AvatarFile"></label>
+            <input asp-for="Upload!.AvatarFile" type="file" />
+        </li>
+        <li class="button">
+            <button type="submit">Upload</button>
+        </li>
+    </ul>
+</form>

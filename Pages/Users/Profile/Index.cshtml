@@ -23,6 +23,14 @@
             <label asp-for="CurrentUser!.Email"></label>
             <input asp-for="CurrentUser!.Email" type="email" readonly="readonly" />
         </li>
+        @if (Model.CurrentUser!.Avatar != null)
+        {
+            var avatarFileName = $"/{Model.CurrentUser!.Avatar}";
+            <li>
+                <label asp-for="CurrentUser!.Avatar"></label>
+                <img src="@avatarFileName" />
+            </li>
+        }
         <li class="button">
             <a asp-page="EditProfile">Edit</a>
         </li>
