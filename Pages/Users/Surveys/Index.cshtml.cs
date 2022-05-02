@@ -13,11 +13,29 @@ namespace GlobomanticsSurveys.Pages.Users.Surveys
         public IndexModel(SurveysContext context) => this.context = context;
 
         [BindProperty]
-        public List<Survey>? Surveys { get; set; }
+        public List<Survey>? AvailableSurveys { get; set; }
 
-        public async Task OnGetAsync()
+        public List<SurveyResponse>? UserResponses { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
         {
-            Surveys = await context.Surveys.ToListAsync();
+            var username = HttpContext.Session.GetString("User");
+            if (username == null)
+            {
+                return Unauthorized();
+            }
+            var user = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
+            if (user == null)
+            {
+                HttpContext.Session.Clear();
+                return BadRequest();
+            }
+            AvailableSurveys = await context.Surveys.ToListAsync();
+            UserResponses = await context
+                .Responses
+                .Where(r => r.UserId == user.Id)
+                .ToListAsync();
+            return Page();
         }
     }
 }

@@ -4,6 +4,15 @@
     Layout = "_Layout";
     ViewData["Title"] = "Past Surveys";
 }
+@{
+    int? GetResponseId(int surveyId)
+    {
+        var response = Model.UserResponses!
+            .Where(r => r.SurveyId == surveyId)
+            .FirstOrDefault();
+        return response?.Id;
+    }
+}
 
 <h3 class="navLink">
     <a asp-page="./ViewResults">View</a>
@@ -19,15 +28,26 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var survey in Model.Surveys!)
+        @foreach (var survey in Model.AvailableSurveys!)
         {
             <tr>
                 <td>@survey.Id</td>
                 <td>@survey.Title</td>
                 <td>
-                    <a asp-controller="Survey"
-                       asp-action="Index"
-                       asp-route-id="@survey.Id">Take survey!</a>
+                    @{
+                        var responseId = GetResponseId(survey.Id);
+                    }
+                    @if (responseId == null)
+                    {
+                        <a asp-controller="Survey"
+                           asp-action="Index"
+                           asp-route-id="@survey.Id">Take survey!</a>
+                    }
+                    else
+                    {
+                        <a asp-page="./ViewResults"
+                           asp-route-id="@responseId">View response</a>
+                    }
                 </td>
             </tr>
         }

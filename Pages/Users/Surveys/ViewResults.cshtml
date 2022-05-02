@@ -1,7 +1,22 @@
-@page
+@page "{id:int}"
+@model ViewResultsModel
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Survey Results";
 }
 
-<p>Survey answers:</p>
+<form>
+    <ul>
+        @foreach (var response in Model.SurveyResponse!.Responses)
+        {
+            <li>
+                <label asp-for="@response.QuestionText"></label>
+                <input asp-for="@response.QuestionText" readonly="readonly" />
+            </li>
+            <li>
+                <label asp-for="@response.ResponseText"></label>
+                <input asp-for="@response.ResponseText" readonly="readonly" />
+            </li>
+        }
+    </ul>
+</form>
