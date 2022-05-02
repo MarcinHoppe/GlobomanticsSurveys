@@ -1,3 +1,4 @@
+@model GlobomanticsSurveys.Models.User
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Complete Survey";
@@ -5,5 +6,12 @@
 
 <h2 class="title">Thank you for completing the survey!</h2>
 <h3 class="navLink">
-    <a asp-page="/Users/Surveys/Index">Back</a>
+    @if (Model.IsAdmin)
+    {
+        <a asp-page="/Index">Back to Home Page</a>
+    }
+    else
+    {
+        <a asp-page="/Users/Surveys/Index">Back</a>
+    }
 </h3>

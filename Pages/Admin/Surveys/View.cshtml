@@ -23,8 +23,13 @@
                 @Html.TextAreaFor(model => question.Text, new { @readonly = "readonly" })
             </li>
         }
+        @{
+            var qs = new Dictionary<string, string>(){{"previewUrl", Model.PreviewUrl! }};
+        }
         <li class="button">
             <a asp-page="./Edit" asp-route-id="@Model.Survey!.Id">Edit</a>
+            <a asp-page="./Delete" asp-route-id="@Model.Survey!.Id">Delete</a>
+            <a asp-page="./Preview" asp-all-route-data="qs">Preview</a>
             <a asp-page="./Export" asp-route-id="@Model.Survey!.Id">Export</a>
         </li>
     </ul>

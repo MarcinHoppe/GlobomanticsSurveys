@@ -110,13 +110,36 @@ namespace GlobomanticsSurveys.Controllers
             }
             else
             {
+                // If the user is an admin, it was just a preview.
+                // Remove the survey from database.
+                var user = await context.Users.FindAsync(surveyResponse.UserId);
+                if (user == null)
+                {
+                    return BadRequest();
+                }
+                if (user.IsAdmin)
+                {
+                    context.RemoveRange(surveyResponse.Responses);
+                    context.Remove(surveyResponse);
+                    await context.SaveChangesAsync();
+                }
                 return RedirectToAction("Complete");
             }
         }
 
-        public IActionResult Complete()
+        public async Task<IActionResult> Complete()
         {
-            return View();
+            var username = HttpContext.Session.GetString("User");
+            if (username == null)
+            {
+                return Unauthorized();
+            }
+            var user = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            return View(user);
         }
     }
 }
